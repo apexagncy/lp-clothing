@@ -1,155 +1,73 @@
-// Dados dos produtos (Simulando uma API/Banco de dados)
+// Dados do Catálogo (Adicione ou remova itens aqui)
 const products = [
-  {
-    id: 1,
-    category: "tshirt",
-    name: "Oversized Black Apex",
-    price: "R$ 45,90",
-    img: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1974&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    category: "tshirt",
-    name: "Vintage White Tee",
-    price: "R$ 42,90",
-    img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    category: "hoodie",
-    name: "Moletom Dark Minimal",
-    price: "R$ 89,90",
-    img: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1974&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    category: "pants",
-    name: "Calça Cargo Techwear",
-    price: "R$ 110,00",
-    img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=1974&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    category: "tshirt",
-    name: "Acid Wash Tee",
-    price: "R$ 49,90",
-    img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1928&auto=format&fit=crop",
-  },
-  {
-    id: 6,
-    category: "hoodie",
-    name: "Essential Hoodie Grey",
-    price: "R$ 85,00",
-    img: "https://images.unsplash.com/photo-1578932750294-f5075e85f44a?q=80&w=1935&auto=format&fit=crop",
-  },
+    { id: 1, category: 'tshirt', name: 'Oversized Apex Black', price: 'R$ 49,90', img: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1974&auto=format&fit=crop' },
+    { id: 2, category: 'tshirt', name: 'Tee Acid Wash Premium', price: 'R$ 54,90', img: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1928&auto=format&fit=crop' },
+    { id: 3, category: 'hoodie', name: 'Moletom Heavyweight Gelo', price: 'R$ 119,00', img: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=1974&auto=format&fit=crop' },
+    { id: 4, category: 'pants', name: 'Calça Cargo Militar Black', price: 'R$ 129,00', img: 'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=1974&auto=format&fit=crop' },
+    { id: 5, category: 'tshirt', name: 'Vintage Tee Off-White', price: 'R$ 49,90', img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1780&auto=format&fit=crop' },
+    { id: 6, category: 'hoodie', name: 'Hoodie Box Logo Apex', price: 'R$ 119,00', img: 'https://images.unsplash.com/photo-1578932750294-f5075e85f44a?q=80&w=1935&auto=format&fit=crop' },
 ];
 
-const productGrid = document.querySelector(".product-grid");
-const filterBtns = document.querySelectorAll(".filter-btn");
+const productContainer = document.getElementById('product-container');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const navMenu = document.getElementById('nav-menu');
 
-// Função para renderizar produtos
-function displayProducts(filteredList) {
-  productGrid.innerHTML = filteredList
-    .map(
-      (product) => `
-        <div class="product-card" data-category="${product.category}">
-            <img src="${product.img}" alt="${product.name}" class="product-img">
-            <div class="product-info">
-                <h3>${product.name}</h3>
-                <p>${product.price} <small>(Atacado)</small></p>
+// 1. Função Renderizar Produtos
+function renderProducts(list) {
+    productContainer.innerHTML = list.map(item => `
+        <div class="p-card" data-category="${item.category}">
+            <img src="${item.img}" alt="${item.name}" class="p-img">
+            <div class="p-info">
+                <h3>${item.name}</h3>
+                <span class="price">${item.price}</span>
             </div>
         </div>
-    `,
-    )
-    .join("");
+    `).join('');
 }
 
-// Inicializar catálogo
-displayProducts(products);
-
-// Lógica de Filtro
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    // Remover classe ativa
-    filterBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const filterValue = btn.getAttribute("data-filter");
-
-    if (filterValue === "all") {
-      displayProducts(products);
-    } else {
-      const filtered = products.filter((p) => p.category === filterValue);
-      displayProducts(filtered);
-    }
-  });
+// 2. Filtros Dinâmicos
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const filter = btn.dataset.filter;
+        const filteredList = filter === 'all' 
+            ? products 
+            : products.filter(p => p.category === filter);
+        
+        renderProducts(filteredList);
+    });
 });
 
-// Efeito Sticky Header
-window.addEventListener("scroll", () => {
-  const header = document.getElementById("header");
-  if (window.scrollY > 50) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
+// 3. Menu Mobile Toggle
+mobileMenu.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    const icon = mobileMenu.querySelector('i');
+    icon.classList.toggle('fa-bars-staggered');
+    icon.classList.toggle('fa-xmark');
 });
 
-// Animação de Entrada (Reveal)
-const observerOptions = { threshold: 0.1 };
+// 4. Header Scroll Effect
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// 5. Animação ao Rolar (Intersection Observer)
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, observerOptions);
+    entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
 
-document.querySelectorAll(".product-card, .benefit-card").forEach((el) => {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(30px)";
-  el.style.transition = "all 0.6s ease-out";
-  observer.observe(el);
+// Inicialização
+window.addEventListener('DOMContentLoaded', () => {
+    renderProducts(products);
+    
+    // Adiciona classe para animação nos cards
+    document.querySelectorAll('.b-card, .p-card').forEach(el => observer.observe(el));
 });
-
-/* --- ADICIONE AO SEU SCRIPT.JS --- */
-
-const menuIcon = document.getElementById("menu-icon");
-const navLinksContainer = document.querySelector(".nav-links");
-const navLinksItems = document.querySelectorAll(".nav-links a");
-
-// Abrir/Fechar Menu
-menuIcon.addEventListener("click", () => {
-  navLinksContainer.classList.toggle("active");
-
-  // Muda o ícone de hambúrguer para um "X"
-  const icon = menuIcon.querySelector("i");
-  icon.classList.toggle("fa-bars");
-  icon.classList.toggle("fa-xmark");
-});
-
-// Fechar menu ao clicar em qualquer link (importante para SPAs)
-navLinksItems.forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinksContainer.classList.remove("active");
-    const icon = menuIcon.querySelector("i");
-    icon.classList.add("fa-bars");
-    icon.classList.remove("fa-xmark");
-  });
-});
-
-// Ajuste suave: Impedir scroll quando o menu estiver aberto
-function toggleScroll() {
-  if (navLinksContainer.classList.contains("active")) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "initial";
-  }
-}
-menuIcon.addEventListener("click", toggleScroll);
-navLinksItems.forEach((link) =>
-  link.addEventListener("click", () => {
-    document.body.style.overflow = "initial";
-  }),
-);
