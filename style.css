@@ -250,19 +250,79 @@ footer {
   font-size: 1.2rem;
 }
 
+/* --- ADICIONE ISSO AO SEU CSS --- */
+
+/* Ajuste do Menu Mobile (Drawer) */
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
+  .nav-links {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 70%;
+    height: 100vh;
+    background: var(--card-bg);
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.4s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
   }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .menu-icon {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1002;
+  }
+
+  /* Hero no Mobile */
+  .hero-content h1 {
+    font-size: 2.8rem; /* Diminuído para não quebrar */
+  }
+
+  .hero-btns {
+    flex-direction: column; /* Botões um em cima do outro */
+  }
+
+  /* Catálogo em 2 colunas no mobile (mais moderno) */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .product-img {
+    height: 200px; /* Imagens menores para caber em 2 colunas */
+  }
+
+  .product-info h3 {
+    font-size: 0.9rem;
+  }
+
+  /* Benefícios */
   .grid-benefits {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
-  .nav-links {
-    display: none;
+}
+
+/* Ajustes para celulares muito pequenos */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
   }
-  .section-title {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
+
+  .filters {
+    overflow-x: auto; /* Permite arrastar os filtros pro lado */
+    white-space: nowrap;
+    padding-bottom: 10px;
+    width: 100%;
   }
 }

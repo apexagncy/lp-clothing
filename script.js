@@ -112,3 +112,44 @@ document.querySelectorAll(".product-card, .benefit-card").forEach((el) => {
   el.style.transition = "all 0.6s ease-out";
   observer.observe(el);
 });
+
+/* --- ADICIONE AO SEU SCRIPT.JS --- */
+
+const menuIcon = document.getElementById("menu-icon");
+const navLinksContainer = document.querySelector(".nav-links");
+const navLinksItems = document.querySelectorAll(".nav-links a");
+
+// Abrir/Fechar Menu
+menuIcon.addEventListener("click", () => {
+  navLinksContainer.classList.toggle("active");
+
+  // Muda o ícone de hambúrguer para um "X"
+  const icon = menuIcon.querySelector("i");
+  icon.classList.toggle("fa-bars");
+  icon.classList.toggle("fa-xmark");
+});
+
+// Fechar menu ao clicar em qualquer link (importante para SPAs)
+navLinksItems.forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinksContainer.classList.remove("active");
+    const icon = menuIcon.querySelector("i");
+    icon.classList.add("fa-bars");
+    icon.classList.remove("fa-xmark");
+  });
+});
+
+// Ajuste suave: Impedir scroll quando o menu estiver aberto
+function toggleScroll() {
+  if (navLinksContainer.classList.contains("active")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "initial";
+  }
+}
+menuIcon.addEventListener("click", toggleScroll);
+navLinksItems.forEach((link) =>
+  link.addEventListener("click", () => {
+    document.body.style.overflow = "initial";
+  }),
+);
