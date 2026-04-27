@@ -1,103 +1,101 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Apex Clothing | Atacado Premium</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Wholesale | Atacado de Moda Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
     <header id="header">
-      <nav class="container">
-        <a href="#" class="logo">APEX<span>CLOTHING</span></a>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#catalog">Catálogo</a></li>
-          <li><a href="#benefits">Vantagens</a></li>
-          <li>
-            <a href="#contact" class="btn-contact">Falar com Consultor</a>
-          </li>
-        </ul>
-        <div class="menu-icon" id="menu-icon">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-      </nav>
+        <nav class="container">
+            <a href="#" class="logo">APEX<span>WHOLESALE</span></a>
+            
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#catalog">Catálogo</a></li>
+                <li><a href="#benefits">Vantagens</a></li>
+                <li><a href="https://wa.me/seunumerousuario" class="btn-nav">Falar com Consultor</a></li>
+            </ul>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </div>
+        </nav>
     </header>
 
     <section id="home" class="hero">
-      <div class="container hero-content">
-        <span class="reveal">Moda Masculina & Streetwear</span>
-        <h1>ELEVE O NÍVEL DA SUA <span>LOJA.</span></h1>
-        <p>
-          Abasteça seu estoque com peças exclusivas, alta margem de lucro e
-          qualidade premium para pequenos lojistas.
-        </p>
-        <div class="hero-btns">
-          <a href="#catalog" class="btn-primary">Ver Coleção</a>
-          <a href="https://wa.me/seunumeroaqui" class="btn-secondary"
-            >Baixar Tabela PDF</a
-          >
+        <div class="container hero-wrapper">
+            <div class="hero-content">
+                <span class="badge">Acesso Exclusivo para Lojistas</span>
+                <h1>MODA QUE <span>LUCRA.</span></h1>
+                <p>Abasteça sua loja com o melhor do Streetwear e Moda Casual. Qualidade premium, envio imediato e margens acima de 100%.</p>
+                <div class="hero-btns">
+                    <a href="#catalog" class="btn-primary">Ver Catálogo</a>
+                    <a href="#contact" class="btn-outline">Tabela de Preços</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <section id="catalog" class="catalog container">
-      <div class="section-title">
-        <h2>Nosso Catálogo</h2>
-        <div class="filters">
-          <button class="filter-btn active" data-filter="all">Todos</button>
-          <button class="filter-btn" data-filter="tshirt">Camisetas</button>
-          <button class="filter-btn" data-filter="hoodie">Moletons</button>
-          <button class="filter-btn" data-filter="pants">Calças</button>
-        </div>
-      </div>
-
-      <div class="product-grid"></div>
     </section>
 
     <section id="benefits" class="benefits">
-      <div class="container grid-benefits">
-        <div class="benefit-card">
-          <i class="fa-solid fa-truck-fast"></i>
-          <h3>Envio Ágil</h3>
-          <p>Despachamos para todo o Brasil em até 24h após o pedido.</p>
+        <div class="container grid-benefits">
+            <div class="b-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Envio Express</h3>
+                <p>Pedidos despachados em até 24h para todo o Brasil.</p>
+            </div>
+            <div class="b-card">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Qualidade A+</h3>
+                <p>Tecidos selecionados e acabamento de alto padrão.</p>
+            </div>
+            <div class="b-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Alta Margem</h3>
+                <p>Preços competitivos para maximizar seu faturamento.</p>
+            </div>
         </div>
-        <div class="benefit-card">
-          <i class="fa-solid fa-percent"></i>
-          <h3>Margem de 100%</h3>
-          <p>Preços competitivos para você dobrar seu investimento.</p>
+    </section>
+
+    <section id="catalog" class="catalog">
+        <div class="container">
+            <div class="catalog-header">
+                <div class="title-area">
+                    <h2>Coleção Atual</h2>
+                    <p>Peças exclusivas prontas para entrega.</p>
+                </div>
+                <div class="filter-wrapper">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="tshirt">Camisetas</button>
+                    <button class="filter-btn" data-filter="hoodie">Moletons</button>
+                    <button class="filter-btn" data-filter="pants">Calças</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-container">
+                </div>
         </div>
-        <div class="benefit-card">
-          <i class="fa-solid fa-box-open"></i>
-          <h3>Grade Flexível</h3>
-          <p>Monte seu pedido com tamanhos variados conforme sua demanda.</p>
-        </div>
-      </div>
     </section>
 
     <footer id="contact">
-      <div class="container footer-content">
-        <div class="footer-info">
-          <h3>Pronto para lucrar?</h3>
-          <p>Chame no WhatsApp e receba as fotos para divulgação.</p>
-          <a href="#" class="btn-whatsapp"
-            ><i class="fa-brands fa-whatsapp"></i> Iniciar Pedido</a
-          >
+        <div class="container footer-grid">
+            <div class="footer-cta">
+                <h2>Seja um revendedor parceiro</h2>
+                <p>Cadastre-se para receber fotos profissionais para suas redes sociais e ofertas semanais.</p>
+                <a href="https://wa.me/seunumerousuario" class="btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
+                </a>
+            </div>
         </div>
-        <div class="footer-links">
-          <p>&copy; 2024 Apex Clothing - Feito para Empreendedores.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Apex Wholesale. Todos os direitos reservados.</p>
         </div>
-      </div>
     </footer>
 
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
